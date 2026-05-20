@@ -1,0 +1,220 @@
+/* ========================================================
+   Theme · Boarding Pass (登机牌)
+   Ticket layout, dashed perforation, barcode, stencil type
+   ======================================================== */
+body.t-boardingpass {
+  --paper: #e8e4dc;
+  --ink: #1a1a2e;
+  --rule: #1a1a2e;
+  --accent: #0066cc;
+  --muted: #6a6a7a;
+  background: var(--paper);
+  font-family: "IBM Plex Sans","Manrope",sans-serif;
+  color: var(--ink);
+}
+body.t-boardingpass .sheet {
+  background: #fff;
+  border: 0;
+  border-radius: 12px;
+  padding: 0;
+  position: relative;
+  box-shadow: 0 20px 60px -30px rgba(0,0,0,.25);
+  overflow: hidden;
+}
+body.t-boardingpass .sheet::before {
+  /* dashed perforation line */
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  right: 200px;
+  width: 0;
+  border-right: 2px dashed #ccc;
+  z-index: 2;
+}
+body.t-boardingpass .sheet::after {
+  /* semicircle notch top */
+  content: "";
+  position: absolute;
+  top: -12px; right: 188px;
+  width: 24px; height: 24px;
+  background: var(--paper);
+  border-radius: 50%;
+  z-index: 3;
+}
+
+body.t-boardingpass .runner {
+  background: var(--accent);
+  color: #fff;
+  padding: 12px 32px;
+  display: flex;
+  justify-content: space-between;
+  border: 0;
+  margin: 0;
+  font-family: "IBM Plex Sans",sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+}
+body.t-boardingpass .runner b { color: #fff; }
+
+body.t-boardingpass .kicker {
+  margin: 28px 32px 4px;
+  font-family: "IBM Plex Sans",sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: .3em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+body.t-boardingpass .kicker::before { content: "✈  "; }
+
+body.t-boardingpass .title {
+  font-family: "Bebas Neue","IBM Plex Sans",sans-serif;
+  font-weight: 400;
+  font-size: clamp(48px,7vw,96px);
+  line-height: .9;
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin: 0 32px 16px;
+  padding-right: 220px;
+}
+
+body.t-boardingpass .byline {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border: 0;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 0;
+  margin: 0 32px 32px;
+  font-family: "IBM Plex Sans",sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+body.t-boardingpass .byline span {
+  padding: 12px 12px 12px 0;
+  border-right: 1px solid #ddd;
+}
+body.t-boardingpass .byline span:last-child { border-right: 0; padding-left: 12px; }
+body.t-boardingpass .byline span:nth-child(2) { padding-left: 12px; }
+body.t-boardingpass .byline b {
+  display: block;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: -.01em;
+  text-transform: none;
+  margin-top: 4px;
+}
+
+body.t-boardingpass .article {
+  font-family: "IBM Plex Sans","Noto Serif SC",sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+  padding: 0 32px 56px;
+  padding-right: 232px;
+}
+body.t-boardingpass .article > p:first-of-type::first-letter {
+  font-family: "Bebas Neue",sans-serif;
+  font-weight: 400;
+  float: left;
+  font-size: 4em;
+  line-height: .85;
+  padding: 6px 12px 0 0;
+  color: var(--accent);
+}
+body.t-boardingpass .article h1, body.t-boardingpass .article h2,
+body.t-boardingpass .article h3, body.t-boardingpass .article h4 {
+  font-family: "IBM Plex Sans",sans-serif;
+  font-weight: 700;
+  letter-spacing: -.01em;
+  margin: 1.6em 0 .4em;
+}
+body.t-boardingpass .article h2 {
+  font-size: 1.4em;
+  color: var(--accent);
+  border: 0;
+  padding: 0;
+}
+body.t-boardingpass .article h2::before { content: "▸ "; }
+body.t-boardingpass .article a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+}
+body.t-boardingpass .article blockquote {
+  border: 0;
+  border-left: 4px solid var(--accent);
+  background: rgba(0,102,204,.05);
+  padding: .6em 1em;
+  margin: 1.4em 0;
+  font-style: normal;
+  font-weight: 600;
+}
+body.t-boardingpass .article code {
+  background: #f0f4f8;
+  color: var(--ink);
+  font-family: "JetBrains Mono",monospace;
+}
+body.t-boardingpass .article pre {
+  background: var(--ink);
+  color: #fff;
+  padding: 16px 20px;
+  border-left: 4px solid var(--accent);
+  font-family: "JetBrains Mono",monospace;
+  font-size: 13px;
+  margin: 1.4em 0;
+}
+
+/* Barcode in colophon */
+body.t-boardingpass .colophon {
+  margin: 0;
+  padding: 16px 32px;
+  border: 0;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "IBM Plex Sans",sans-serif;
+  font-weight: 600;
+  font-size: 10px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+body.t-boardingpass .colophon span:last-child {
+  /* barcode simulation */
+  font-family: "Libre Barcode 39","JetBrains Mono",monospace;
+  font-size: 32px;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+body.t-boardingpass .colophon span:last-child::before {
+  content: "|||||||||||||||||||";
+  font-family: "JetBrains Mono",monospace;
+  font-size: 10px;
+  letter-spacing: -1px;
+  display: block;
+  line-height: 1;
+  color: var(--ink);
+  background:
+    repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px);
+  height: 28px;
+  width: 100px;
+  background-size: 100% 100%;
+  color: transparent;
+}
+
+@media print {
+  body.t-boardingpass { background: #fff; }
+  body.t-boardingpass .sheet { box-shadow: none; border-radius: 0; }
+  body.t-boardingpass .sheet::before { border-color: #000; }
+  body.t-boardingpass .sheet::after { background: #fff; }
+  body.t-boardingpass:not(.print-color) .runner { background: #000; }
+}

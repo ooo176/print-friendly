@@ -1,0 +1,232 @@
+/* ========================================================
+   Theme · Japanese (和風)
+   Washi paper, vermillion seal, restrained ink composition
+   Inspired by 和風印刷 / 朱印 / 和綴じ本
+   ======================================================== */
+body.t-japanese {
+  --paper: #f6efe1;
+  --ink: #1a1a18;
+  --rule: #b8a888;
+  --accent: #b8332a;
+  --muted: #847562;
+  background: var(--paper);
+  background-image:
+    radial-gradient(rgba(132,117,98,.05) 1px, transparent 2px),
+    radial-gradient(rgba(184,168,136,.04) 1px, transparent 2px);
+  background-size: 8px 8px, 13px 13px;
+  background-position: 0 0, 4px 5px;
+  font-family: "Noto Serif SC","Lora",serif;
+  color: var(--ink);
+}
+body.t-japanese .sheet {
+  background: #fbf4e3;
+  background-image:
+    radial-gradient(rgba(184,168,136,.05) 1px, transparent 2px);
+  background-size: 7px 7px;
+  border: 1px solid var(--rule);
+  padding: 88px 88px 96px;
+  position: relative;
+  box-shadow: 0 30px 80px -30px rgba(0,0,0,.2);
+}
+body.t-japanese .sheet::before {
+  content: "";
+  position: absolute;
+  top: 24px; left: 24px; right: 24px; bottom: 24px;
+  border: 1px solid var(--rule);
+  pointer-events: none;
+}
+
+body.t-japanese .runner {
+  position: absolute;
+  top: 40px; right: 56px;
+  display: block;
+  border: 0;
+  padding: 0; margin: 0;
+  font-family: "Noto Serif SC",serif;
+  font-size: 11px;
+  letter-spacing: .35em;
+  text-transform: none;
+  color: var(--muted);
+  text-align: right;
+  writing-mode: horizontal-tb;
+}
+body.t-japanese .runner span { display: block; line-height: 1.7; }
+body.t-japanese .runner span:nth-child(2) { display: none; }
+body.t-japanese .runner b { font-weight: 600; color: var(--ink); }
+
+body.t-japanese .kicker {
+  text-align: center;
+  font-family: "Noto Serif SC",serif;
+  font-size: 12px;
+  letter-spacing: .5em;
+  text-transform: none;
+  color: var(--accent);
+  margin: 0 0 4px;
+  padding-right: .5em; /* compensate for letter-spacing on last char */
+}
+body.t-japanese .kicker::before { content: "—  "; color: var(--rule); }
+body.t-japanese .kicker::after  { content: "  —"; color: var(--rule); }
+
+body.t-japanese .title {
+  text-align: center;
+  font-family: "Rozha One","Cormorant Garamond","Noto Serif SC",serif;
+  font-weight: 400;
+  font-size: clamp(40px,5vw,64px);
+  line-height: 1.15;
+  letter-spacing: .04em;
+  color: var(--ink);
+  margin: 24px auto 0;
+  max-width: 26ch;
+  position: relative;
+}
+body.t-japanese .title::after {
+  /* vermillion seal */
+  content: "印";
+  position: absolute;
+  right: -28px; top: 8px;
+  width: 56px; height: 56px;
+  background: var(--accent);
+  color: #fbf4e3;
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  font-family: "Noto Serif SC",serif;
+  font-weight: 800;
+  font-size: 28px;
+  letter-spacing: 0;
+  transform: rotate(-4deg);
+  box-shadow:
+    inset 0 0 0 3px var(--accent),
+    inset 0 0 0 5px #fbf4e3,
+    inset 0 0 0 6px var(--accent),
+    0 0 0 2px rgba(184,51,42,.2);
+  /* paint-stamp texture */
+  background-image: radial-gradient(rgba(0,0,0,.18) 1px, transparent 2px);
+  background-size: 4px 4px;
+}
+
+body.t-japanese .byline {
+  text-align: center;
+  border: 0;
+  padding: 28px 0 0;
+  margin: 0 0 56px;
+  font-family: "Noto Serif SC",serif;
+  font-size: 12px;
+  letter-spacing: .2em;
+  text-transform: none;
+  color: var(--muted);
+  display: block;
+}
+body.t-japanese .byline span { display: inline; margin: 0 14px; }
+body.t-japanese .byline b { color: var(--ink); font-weight: 600; }
+body.t-japanese .byline::before {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 24px;
+  background: var(--accent);
+  margin: 0 auto 18px;
+}
+
+body.t-japanese .article {
+  font-family: "Lora","Noto Serif SC",serif;
+  font-size: 16.5px;
+  line-height: 2;
+  color: var(--ink);
+  text-align: justify;
+  text-justify: inter-ideograph;
+}
+body.t-japanese .article > p:first-of-type {
+  text-indent: 2em;
+}
+body.t-japanese .article > p:first-of-type::first-letter {
+  font: inherit; float: none; padding: 0; color: inherit;
+}
+body.t-japanese .article h1, body.t-japanese .article h2,
+body.t-japanese .article h3, body.t-japanese .article h4 {
+  font-family: "Rozha One","Cormorant Garamond","Noto Serif SC",serif;
+  font-weight: 400;
+  letter-spacing: .04em;
+  margin: 2em 0 .8em;
+  color: var(--ink);
+  text-align: left;
+}
+body.t-japanese .article h2 {
+  font-size: 1.45em;
+  border: 0;
+  padding: 0;
+  position: relative;
+  padding-left: 1.4em;
+}
+body.t-japanese .article h2::before {
+  content: "";
+  position: absolute;
+  left: 0; top: .5em;
+  width: 1em; height: 2px;
+  background: var(--accent);
+}
+body.t-japanese .article h3 {
+  font-size: 1.2em;
+  padding-left: 1em;
+  border-left: 2px solid var(--accent);
+}
+body.t-japanese .article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent);
+}
+body.t-japanese .article blockquote {
+  border: 0;
+  padding: .6em 0 .6em 2em;
+  margin: 1.6em 0;
+  position: relative;
+  font-style: normal;
+  color: var(--ink);
+  font-family: "Cormorant Garamond","Noto Serif SC",serif;
+  font-size: 1.2em;
+  line-height: 1.7;
+}
+body.t-japanese .article blockquote::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: var(--accent);
+}
+body.t-japanese .article code {
+  background: rgba(184,51,42,.08);
+  color: var(--ink);
+  font-family: "JetBrains Mono",monospace;
+}
+body.t-japanese .article pre {
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--accent);
+  padding: 16px 20px;
+  margin: 1.4em 0;
+  font-family: "JetBrains Mono",monospace;
+  font-size: 13px;
+}
+body.t-japanese .article ul li::marker { content: "・"; color: var(--accent); }
+
+body.t-japanese .colophon {
+  margin-top: 64px;
+  padding-top: 18px;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  font-family: "Noto Serif SC",serif;
+  font-size: 11px;
+  letter-spacing: .25em;
+  text-transform: none;
+  color: var(--muted);
+}
+
+@media print {
+  body.t-japanese { background: #fff; background-image: none; }
+  body.t-japanese .sheet { box-shadow: none; }
+  body.t-japanese.print-color { background: var(--paper); }
+  body.t-japanese.print-color .sheet { background: #fbf4e3; }
+}

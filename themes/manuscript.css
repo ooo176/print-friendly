@@ -1,0 +1,182 @@
+/* ========================================================
+   Theme · Manuscript (手稿)
+   Aged parchment, handwritten title, ornate dividers
+   ======================================================== */
+body.t-manuscript {
+  --paper: #f1e8c8;
+  --ink: #3a2c14;
+  --rule: #7a5c2e;
+  --accent: #a83232;
+  --muted: #8a7449;
+  background: var(--paper);
+  background-image:
+    repeating-linear-gradient(0deg, transparent 0 31px, rgba(122,92,46,.12) 31px 32px),
+    radial-gradient(circle at 0% 0%, rgba(168,50,50,.04), transparent 60%);
+  font-family: "EB Garamond","Noto Serif SC",serif;
+  color: var(--ink);
+}
+body.t-manuscript .sheet {
+  background: #fbf6e3;
+  border: 1px solid #c8b078;
+  padding: 80px 88px;
+  position: relative;
+  box-shadow: 0 30px 80px -30px rgba(58,44,20,.45);
+}
+body.t-manuscript .sheet::before {
+  content: "";
+  position: absolute; inset: 18px;
+  border: 1px double #b89c5a;
+  pointer-events: none;
+}
+
+body.t-manuscript .runner {
+  display: flex; justify-content: center;
+  border: 0;
+  padding: 0;
+  margin-bottom: 24px;
+  font-family: "EB Garamond",serif;
+  font-style: italic;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+  gap: 18px;
+}
+body.t-manuscript .runner span:nth-child(2) { display: none; }
+body.t-manuscript .runner b { font-weight: 400; color: var(--ink); }
+
+body.t-manuscript .kicker {
+  text-align: center;
+  font-family: "EB Garamond",serif;
+  font-style: italic;
+  color: var(--accent);
+  font-size: 14px;
+  letter-spacing: .15em;
+  text-transform: lowercase;
+  margin-bottom: 16px;
+}
+body.t-manuscript .kicker::before { content: "❦ "; }
+body.t-manuscript .kicker::after  { content: " ❦"; }
+body.t-manuscript .title {
+  text-align: center;
+  font-family: "Caveat","EB Garamond",cursive;
+  font-weight: 700;
+  font-size: clamp(44px,5.5vw,76px);
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 0 0 24px;
+  letter-spacing: 0;
+}
+body.t-manuscript .byline {
+  text-align: center;
+  border: 0;
+  padding: 0;
+  margin: 0 auto 8px;
+  font-family: "EB Garamond",serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0;
+  text-transform: none;
+  display: block;
+}
+body.t-manuscript .byline span { display: inline; margin: 0 12px; }
+body.t-manuscript .byline b { font-weight: 400; color: var(--ink); }
+body.t-manuscript .byline::after {
+  content: "";
+  display: block;
+  width: 80px;
+  height: 14px;
+  margin: 24px auto 32px;
+  background:
+    radial-gradient(circle, var(--accent) 1.5px, transparent 2px) center / 12px 6px repeat-x;
+}
+body.t-manuscript .article {
+  font-family: "EB Garamond","Noto Serif SC",serif;
+  font-size: 18px;
+  line-height: 1.95;
+  text-align: justify;
+  hyphens: auto;
+}
+body.t-manuscript .article > p:first-of-type::first-letter {
+  font-family: "Caveat",cursive;
+  color: var(--accent);
+  font-size: 5em;
+  line-height: .85;
+  padding: 8px 14px 0 0;
+  float: left;
+  font-weight: 700;
+}
+body.t-manuscript .article h1, body.t-manuscript .article h2,
+body.t-manuscript .article h3, body.t-manuscript .article h4 {
+  font-family: "Caveat","EB Garamond",cursive;
+  font-weight: 700;
+  color: var(--rule);
+  text-align: center;
+  letter-spacing: 0;
+  margin: 1.8em 0 .4em;
+}
+body.t-manuscript .article h2 {
+  font-size: 1.8em;
+  border: 0;
+  padding: 0;
+}
+body.t-manuscript .article h2::after {
+  content: "";
+  display: block;
+  width: 60px; height: 1px;
+  background: var(--rule);
+  margin: 8px auto 0;
+}
+body.t-manuscript .article a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 4px;
+}
+body.t-manuscript .article blockquote {
+  font-family: "Caveat",cursive;
+  font-size: 1.5em;
+  font-style: normal;
+  color: var(--rule);
+  border-left: 0;
+  text-align: center;
+  padding: .4em 1em;
+  margin: 1.8em auto;
+  max-width: 80%;
+  position: relative;
+}
+body.t-manuscript .article blockquote::before { content: "“"; font-size: 2em; color: var(--accent); display: block; line-height: 0; margin-top: .4em; }
+body.t-manuscript .article code { background: rgba(168,50,50,.08); color: var(--ink); }
+body.t-manuscript .article pre {
+  background: #ede1bb;
+  color: var(--ink);
+  border: 1px solid #c8b078;
+  border-left: 4px solid var(--accent);
+  padding: 16px 20px;
+  margin: 1.4em 0;
+  font-family: "DM Mono",monospace;
+  font-size: 13px;
+}
+body.t-manuscript .colophon {
+  margin-top: 56px;
+  padding-top: 16px;
+  border: 0;
+  border-top: 1px solid #c8b078;
+  display: block;
+  text-align: center;
+  font-family: "EB Garamond",serif;
+  font-style: italic;
+  font-size: 12px;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+}
+body.t-manuscript .colophon span + span::before { content: " · "; color: var(--rule); }
+
+@media print {
+  body.t-manuscript { background: #fff; background-image: none; }
+  body.t-manuscript .sheet { box-shadow: none; }
+  body.t-manuscript.print-color { background: var(--paper); }
+  body.t-manuscript.print-color .sheet { background: #fbf6e3; }
+}

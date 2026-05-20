@@ -1,0 +1,146 @@
+/* ========================================================
+   Theme · Pastel (柔光)
+   Soft pink card, rounded corners, gentle gradients
+   ======================================================== */
+body.t-pastel {
+  --paper: #fbf3f5;
+  --ink: #3d2c3a;
+  --rule: #f0d6dc;
+  --accent: #ec7c91;
+  --muted: #a08896;
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 15% 10%, rgba(236,124,145,.18), transparent 50%),
+    radial-gradient(circle at 85% 90%, rgba(165,196,236,.18), transparent 50%),
+    radial-gradient(circle at 50% 50%, rgba(255,221,160,.10), transparent 60%);
+  font-family: "Manrope","Noto Serif SC",sans-serif;
+  color: var(--ink);
+}
+body.t-pastel .sheet {
+  background: #fffafb;
+  border: 1px solid #f4d6dc;
+  border-radius: 24px;
+  padding: 56px 64px 72px;
+  box-shadow: 0 30px 80px -30px rgba(236,124,145,.35);
+}
+body.t-pastel .sheet::before { display: none; }
+
+body.t-pastel .runner {
+  background: linear-gradient(90deg,#fbe4e9,#f3e4ec,#e4ecf6);
+  border-radius: 999px;
+  padding: 8px 18px;
+  display: inline-flex;
+  gap: 18px;
+  margin-bottom: 28px;
+  font-family: "Manrope",sans-serif;
+  font-weight: 600;
+  font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
+  color: var(--muted);
+  border: 0;
+}
+body.t-pastel .runner b { color: #c2546b; font-weight: 700; }
+body.t-pastel .runner span:nth-child(2) { display: none; }
+
+body.t-pastel .kicker {
+  display: inline-block;
+  color: #c2546b;
+  font-family: "Manrope",sans-serif;
+  font-weight: 700;
+  font-size: 11px; letter-spacing: .25em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+body.t-pastel .kicker::before { content: "✦  "; color: var(--accent); }
+
+body.t-pastel .title {
+  font-family: "Fraunces","Noto Serif SC",serif;
+  font-weight: 600;
+  font-size: clamp(34px,4.6vw,56px);
+  line-height: 1.1;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin: 0 0 18px;
+}
+
+body.t-pastel .byline {
+  background: #fbe4e9;
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 18px;
+  margin: 0 0 32px;
+  font-family: "Manrope",sans-serif;
+  font-weight: 600;
+  font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
+  color: #9c5570;
+  display: inline-flex;
+  gap: 18px;
+  flex-wrap: wrap;
+}
+body.t-pastel .byline b { color: var(--accent); }
+
+body.t-pastel .article {
+  font-family: "Manrope","Noto Serif SC",sans-serif;
+  font-size: 16px;
+  line-height: 1.85;
+}
+body.t-pastel .article > p:first-of-type::first-letter {
+  font-family: "Fraunces",serif;
+  font-weight: 600;
+  color: var(--accent);
+  float: left;
+  font-size: 4em;
+  line-height: .9;
+  padding: 8px 12px 0 0;
+}
+body.t-pastel .article h1, body.t-pastel .article h2,
+body.t-pastel .article h3, body.t-pastel .article h4 {
+  font-family: "Fraunces",serif;
+  font-weight: 600;
+  color: #9c5570;
+  margin: 1.8em 0 .4em;
+}
+body.t-pastel .article h2 { border-bottom: 1px solid #f4d6dc; padding-bottom: .25em; }
+body.t-pastel .article a { color: #c2546b; text-decoration-color: #f0a0b0; }
+body.t-pastel .article blockquote {
+  background: linear-gradient(90deg,#fbe4e9,transparent);
+  border-left: 4px solid var(--accent);
+  border-radius: 0 12px 12px 0;
+  padding: .8em 1.2em;
+  margin: 1.6em 0;
+  font-style: italic;
+  color: #6e4858;
+}
+body.t-pastel .article code {
+  background: #fbe4e9; color: #9c5570;
+  border-radius: 4px;
+  font-family: "JetBrains Mono",monospace;
+}
+body.t-pastel .article pre {
+  background: #3d2c3a;
+  color: #fffafb;
+  border-left: 4px solid var(--accent);
+  border-radius: 12px;
+  padding: 18px 22px;
+  font-family: "JetBrains Mono",monospace;
+  font-size: 13px;
+  margin: 1.4em 0;
+  overflow-x: auto;
+}
+body.t-pastel .article ul li::marker { color: var(--accent); }
+
+body.t-pastel .colophon {
+  margin-top: 56px;
+  padding-top: 20px;
+  border: 0;
+  border-top: 1px dashed #f0c4d0;
+  display: flex; justify-content: space-between;
+  font-family: "Manrope",sans-serif;
+  font-weight: 600;
+  font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+  color: var(--muted);
+}
+
+@media print {
+  body.t-pastel { background: #fff; background-image: none; }
+  body.t-pastel .sheet { box-shadow: none; border-radius: 0; }
+  body.t-pastel.print-color { background: var(--paper); }
+}

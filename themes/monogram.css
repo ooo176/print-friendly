@@ -1,0 +1,202 @@
+/* ========================================================
+   Theme · Monogram (纹章 / 书籍扉页)
+   Ivory book, centered monogram emblem, engraved serifs
+   Inspired by luxury book design, ex-libris plates
+   ======================================================== */
+body.t-monogram {
+  --paper: #f0ebe0;
+  --ink: #1c1c1c;
+  --rule: #b8a888;
+  --accent: #5a3e28;
+  --muted: #8a7a68;
+  background: var(--paper);
+  font-family: "Cormorant Garamond","Noto Serif SC",serif;
+  color: var(--ink);
+}
+body.t-monogram .sheet {
+  background: #faf6ee;
+  border: 1px solid var(--rule);
+  padding: 96px 80px;
+  position: relative;
+  box-shadow: 0 30px 80px -30px rgba(28,28,28,.2);
+}
+body.t-monogram .sheet::before {
+  content: "";
+  position: absolute;
+  inset: 16px;
+  border: 1px solid var(--rule);
+  pointer-events: none;
+}
+
+body.t-monogram .runner { display: none; }
+
+/* Centered monogram emblem */
+body.t-monogram .kicker {
+  text-align: center;
+  margin: 0 auto 40px;
+  font-family: "Cormorant Unicase","Cinzel",serif;
+  font-weight: 700;
+  font-size: 28px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  width: 80px; height: 80px;
+  line-height: 80px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  position: relative;
+}
+body.t-monogram .kicker::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+}
+
+body.t-monogram .title {
+  text-align: center;
+  font-family: "Cormorant Garamond","Noto Serif SC",serif;
+  font-weight: 300;
+  font-size: clamp(36px,4.4vw,56px);
+  line-height: 1.15;
+  letter-spacing: .04em;
+  color: var(--ink);
+  margin: 0 auto 8px;
+  max-width: 24ch;
+}
+body.t-monogram .title::after {
+  content: "";
+  display: block;
+  width: 100px;
+  height: 1px;
+  background: var(--rule);
+  margin: 28px auto 0;
+}
+
+body.t-monogram .byline {
+  text-align: center;
+  border: 0;
+  display: block;
+  padding: 24px 0 0;
+  margin: 0 0 64px;
+  font-family: "Cormorant Garamond",serif;
+  font-style: italic;
+  font-size: 15px;
+  letter-spacing: .1em;
+  text-transform: none;
+  color: var(--muted);
+}
+body.t-monogram .byline span { display: inline; margin: 0 14px; }
+body.t-monogram .byline b { font-style: normal; font-weight: 500; color: var(--ink); }
+
+body.t-monogram .article {
+  font-family: "Cormorant Garamond","Noto Serif SC",serif;
+  font-size: 19px;
+  line-height: 1.85;
+  color: var(--ink);
+  text-align: justify;
+  hyphens: auto;
+  max-width: 60ch;
+  margin: 0 auto;
+}
+body.t-monogram .article > p:first-of-type::first-line {
+  font-variant: small-caps;
+  letter-spacing: .08em;
+}
+body.t-monogram .article > p:first-of-type::first-letter {
+  font-family: "Cinzel","Cormorant Garamond",serif;
+  font-weight: 900;
+  float: left;
+  font-size: 5em;
+  line-height: .8;
+  padding: 10px 16px 0 0;
+  color: var(--accent);
+}
+body.t-monogram .article h1, body.t-monogram .article h2,
+body.t-monogram .article h3, body.t-monogram .article h4 {
+  font-family: "Cormorant Garamond","Noto Serif SC",serif;
+  font-weight: 500;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-align: center;
+  margin: 2.4em 0 .8em;
+  color: var(--ink);
+}
+body.t-monogram .article h2 {
+  font-size: 1.3em;
+  border: 0;
+  padding: 0;
+}
+body.t-monogram .article h2::before { content: "— "; color: var(--rule); }
+body.t-monogram .article h2::after  { content: " —"; color: var(--rule); }
+body.t-monogram .article h3 {
+  font-size: 1.1em;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: .04em;
+}
+body.t-monogram .article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+}
+body.t-monogram .article blockquote {
+  font-family: "Cormorant Garamond",serif;
+  font-style: italic;
+  font-size: 1.3em;
+  line-height: 1.6;
+  border: 0;
+  padding: .6em 2em;
+  margin: 2em auto;
+  text-align: center;
+  max-width: 80%;
+  color: var(--accent);
+}
+body.t-monogram .article blockquote::before {
+  content: "❝";
+  display: block;
+  font-size: 2em;
+  color: var(--rule);
+  line-height: 1;
+  margin-bottom: .2em;
+}
+body.t-monogram .article code {
+  background: rgba(90,62,40,.08);
+  color: var(--ink);
+  font-family: "JetBrains Mono",monospace;
+  font-size: .88em;
+}
+body.t-monogram .article pre {
+  background: #2a1d10;
+  color: #faf6ee;
+  border: 0;
+  padding: 18px 22px;
+  font-family: "JetBrains Mono",monospace;
+  font-size: 13px;
+  margin: 1.6em 0;
+}
+body.t-monogram .article ul li::marker { content: "◦ "; color: var(--accent); }
+
+body.t-monogram .colophon {
+  margin-top: 72px;
+  padding-top: 24px;
+  border: 0;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  display: block;
+  font-family: "Cormorant Garamond",serif;
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: none;
+  color: var(--muted);
+}
+body.t-monogram .colophon span { display: inline; margin: 0 14px; }
+
+@media print {
+  body.t-monogram { background: #fff; background-image: none; }
+  body.t-monogram .sheet { box-shadow: none; }
+  body.t-monogram.print-color { background: var(--paper); }
+  body.t-monogram.print-color .sheet { background: #faf6ee; }
+}

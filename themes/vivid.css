@@ -1,0 +1,154 @@
+/* ========================================================
+   Theme · Vivid (炫彩)
+   Gradient hero, color blocks, bold sans
+   ======================================================== */
+body.t-vivid {
+  --paper: #fff8ec;
+  --ink: #1a1430;
+  --rule: #1a1430;
+  --accent: #ff2e63;
+  --muted: #5a4d7a;
+  background: var(--paper);
+  background-image:
+    radial-gradient(circle at 0% 0%,   rgba(255,46,99,.15), transparent 40%),
+    radial-gradient(circle at 100% 0%, rgba(157,42,254,.12), transparent 50%),
+    radial-gradient(circle at 100% 100%, rgba(0,200,255,.12), transparent 50%);
+  font-family: "Manrope","Noto Serif SC",sans-serif;
+  color: var(--ink);
+}
+body.t-vivid .sheet {
+  background: #fff;
+  border: 0;
+  padding: 0;
+  overflow: hidden;
+  box-shadow: 0 40px 100px -30px rgba(157,42,254,.35);
+  position: relative;
+}
+body.t-vivid .sheet::before { display: none; }
+
+/* Hero band with gradient */
+body.t-vivid .runner {
+  display: flex; justify-content: space-between;
+  background: linear-gradient(95deg,#ff2e63,#9d2afe 50%,#00c8ff);
+  color: #fff;
+  padding: 14px 64px;
+  font-family: "Manrope",sans-serif;
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+  font-weight: 600;
+}
+body.t-vivid .runner b { color: #fff; }
+body.t-vivid .kicker {
+  display: inline-block;
+  margin: 56px 64px 8px;
+  background: var(--ink);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-family: "Manrope",sans-serif;
+  font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+}
+body.t-vivid .title {
+  font-family: "Manrope","Noto Serif SC",sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px,6vw,72px);
+  line-height: 1; letter-spacing: -.04em;
+  margin: 0 64px 32px;
+  background: linear-gradient(95deg,#ff2e63,#9d2afe 40%,#00c8ff);
+  -webkit-background-clip: text; background-clip: text;
+  color: transparent;
+}
+body.t-vivid .byline {
+  border: 0;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding: 12px 64px;
+  margin: 0 0 40px;
+  font-family: "Manrope",sans-serif;
+  font-weight: 600;
+  font-size: 11px; letter-spacing: .15em; text-transform: uppercase;
+}
+body.t-vivid .byline b { color: var(--accent); }
+body.t-vivid .article {
+  font-family: "Manrope","Noto Serif SC",sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  padding: 0 64px 80px;
+}
+body.t-vivid .article > p:first-of-type::first-letter {
+  font-family: "Manrope",sans-serif;
+  font-weight: 800;
+  float: left;
+  font-size: 4.5em;
+  line-height: .85;
+  padding: 4px 14px 0 0;
+  background: linear-gradient(135deg,#ff2e63,#9d2afe);
+  -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+body.t-vivid .article h1, body.t-vivid .article h2,
+body.t-vivid .article h3, body.t-vivid .article h4 {
+  font-family: "Manrope",sans-serif;
+  font-weight: 800;
+  letter-spacing: -.02em;
+  margin: 1.8em 0 .5em;
+}
+body.t-vivid .article h2 {
+  color: var(--accent);
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: .2em;
+}
+body.t-vivid .article h3 { color: #9d2afe; }
+body.t-vivid .article a {
+  color: #9d2afe;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+}
+body.t-vivid .article blockquote {
+  border: 0;
+  border-left: 6px solid;
+  border-image: linear-gradient(180deg,#ff2e63,#9d2afe,#00c8ff) 1;
+  background: linear-gradient(90deg,rgba(255,46,99,.06),transparent);
+  padding: .6em 1.2em;
+  margin: 1.6em 0;
+  font-style: normal;
+  font-weight: 600;
+}
+body.t-vivid .article code {
+  background: var(--ink); color: #00ffae;
+  font-family: "JetBrains Mono",monospace;
+}
+body.t-vivid .article pre {
+  background: var(--ink);
+  color: #f6f0ff;
+  border-left: 4px solid var(--accent);
+  border-radius: 6px;
+  padding: 18px 22px;
+  font-family: "JetBrains Mono",monospace;
+  font-size: 13px;
+  margin: 1.4em 0;
+  overflow-x: auto;
+}
+body.t-vivid .colophon {
+  display: flex; justify-content: space-between;
+  background: var(--ink); color: #fff;
+  padding: 16px 64px;
+  font-family: "Manrope",sans-serif;
+  font-size: 10px; letter-spacing: .25em; text-transform: uppercase;
+  margin-top: 0;
+  border: 0;
+}
+
+@media print {
+  body.t-vivid { background: #fff; background-image: none; }
+  body.t-vivid .sheet { box-shadow: none; }
+  body.t-vivid:not(.print-color) .title {
+    background: none; -webkit-text-fill-color: var(--ink); color: var(--ink);
+  }
+  body.t-vivid:not(.print-color) .runner,
+  body.t-vivid:not(.print-color) .kicker,
+  body.t-vivid:not(.print-color) .colophon {
+    background: #000; color: #fff;
+  }
+  body.t-vivid:not(.print-color) .article h2 { color: #000; border-bottom-color: #000; }
+}
