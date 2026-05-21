@@ -1,18 +1,8 @@
 # Press 浏览器扩展 - 安装指南
 
-## 快速安装（5 分钟）
+## 快速安装（2 分钟）
 
-### 步骤 1：生成图标
-
-1. 用浏览器打开 `extension/icon-generator.html`
-2. 右键点击每个 canvas，选择「图片另存为」
-3. 保存为：
-   - `icons/icon16.png`
-   - `icons/icon32.png`
-   - `icons/icon48.png`
-   - `icons/icon128.png`
-
-### 步骤 2：安装扩展
+### 步骤 1：安装扩展
 
 #### Chrome / Edge / Brave
 
@@ -43,11 +33,11 @@
 
 **注意**：Firefox 临时加载的扩展在浏览器重启后会失效，需要重新加载。
 
-### 步骤 3：测试扩展
+### 步骤 2：测试扩展
 
-1. 打开测试页面：https://post.smzdm.com/p/a3gwlgek/
+1. 打开测试页面：https://en.wikipedia.org/wiki/Typography
 
-2. 点击工具栏中的 Press 图标（黑底白字 "P"）
+2. 点击工具栏中的 Press 图标
 
 3. 等待几秒，会自动打开新标签页显示提取的正文
 
@@ -77,16 +67,7 @@
 - 滚动到文章主体部分再点击提取
 - 尝试其他页面测试
 
-### 问题 3：图标不显示
-
-**原因**：图标文件未生成或路径错误
-
-**解决**：
-1. 按照「步骤 1」生成图标
-2. 确保图标保存在 `extension/icons/` 目录下
-3. 重新加载扩展
-
-### 问题 4：主题样式不显示
+### 问题 3：主题样式不显示
 
 **原因**：themes 文件夹未复制
 
@@ -95,7 +76,7 @@
 cp -r themes extension/
 ```
 
-### 问题 5：Firefox 提示 manifest 版本错误
+### 问题 4：Firefox 提示 manifest 版本错误
 
 **原因**：Firefox 不支持 Manifest V3
 
@@ -133,15 +114,11 @@ cp -r themes extension/
 2. 找到 Press，点击「固定」图钉图标
 3. Press 图标会固定显示在工具栏
 
-### 技巧 2：使用右键菜单
-
-在任意网页上右键 → 选择「Press - 提取正文」
-
-### 技巧 3：快速打印
+### 技巧 2：快速打印
 
 提取正文后，直接按 `Ctrl+P` (Windows) 或 `Cmd+P` (Mac) 打印
 
-### 技巧 4：保存为 PDF
+### 技巧 3：保存为 PDF
 
 打印对话框中，选择「目标打印机」→「另存为 PDF」
 
