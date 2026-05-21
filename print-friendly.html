@@ -714,7 +714,54 @@
     const currentTheme = $("themeSelect").value;
     if (wm) wm.style.display = (currentTheme === "naruto") ? "block" : "none";
     applyImageOption();
+    snapImagesToGrid();
     window.scrollTo({ top: $("sheet").offsetTop - 80, behavior: "smooth" });
+  }
+
+  /* =================== Notebook grid-snap for images =================== */
+  function snapImagesToGrid() {
+    const line = 36; // must match notebook --line
+    const theme = $("themeSelect").value;
+    const article = $("article");
+    if (!article) return;
+    // Reset all inline margins first
+    article.querySelectorAll("img, figure").forEach(el => {
+      el.style.marginBottom = "";
+    });
+    if (theme !== "notebook") return;
+    // Snap direct images (not inside figure)
+    article.querySelectorAll("img").forEach(img => {
+      if (img.closest("figure")) return;
+      const doSnap = () => {
+        const style = getComputedStyle(img);
+        const mt = parseFloat(style.marginTop) || 0;
+        const mb = parseFloat(style.marginBottom) || 0;
+        const h = img.offsetHeight + mt + mb;
+        const remainder = h % line;
+        if (remainder < 1) return;
+        img.style.marginBottom = (mb + line - remainder) + "px";
+      };
+      if (img.complete && img.naturalHeight) doSnap();
+      else img.addEventListener("load", doSnap, { once: true });
+    });
+    // Snap figures
+    article.querySelectorAll("figure").forEach(fig => {
+      const imgs = fig.querySelectorAll("img");
+      const allLoaded = [...imgs].every(i => i.complete && i.naturalHeight);
+      const doSnap = () => {
+        const style = getComputedStyle(fig);
+        const mt = parseFloat(style.marginTop) || 0;
+        const mb = parseFloat(style.marginBottom) || 0;
+        const h = fig.offsetHeight + mt + mb;
+        const remainder = h % line;
+        if (remainder < 1) return;
+        fig.style.marginBottom = (mb + line - remainder) + "px";
+      };
+      if (allLoaded) doSnap();
+      else imgs.forEach(i => {
+        if (!i.complete) i.addEventListener("load", doSnap, { once: true });
+      });
+    });
   }
 
   /* =================== Wire-up =================== */
@@ -740,7 +787,7 @@
       if (b.dataset.density !== "normal") document.body.classList.add(b.dataset.density);
     });
   });
-  $("themeSelect").addEventListener("change", (e) => applyTheme(e.target.value));
+  $("themeSelect").addEventListener("change", (e) => { applyTheme(e.target.value); snapImagesToGrid(); });
   $("optColorPrint").addEventListener("change", (e) => {
     document.body.classList.toggle("print-color", e.target.checked);
   });

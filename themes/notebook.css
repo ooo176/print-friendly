@@ -7,10 +7,10 @@
    ======================================================== */
 
 body.t-notebook {
-  --line: 32px;
+  --line: 36px;
   --paper: #f8f6f0;
   --ink: #2c2c2c;
-  --rule: #b8d4e8;
+  --rule: #d0e0f0;
   --accent: #d44040;
   --muted: #888;
   background: #e8e4dc;
@@ -102,8 +102,9 @@ body.t-notebook .article {
   margin-top: 0;
   padding: 0;
   /* The key trick: background-image on the article itself,
-     sized to line-height. The 1px line sits at the bottom
-     of each line-height unit = right under the text baseline. */
+     sized to line-height. Offset so the 1px rule aligns just
+     below the text baseline. With 36px line-height and 15px font,
+     baseline is ~22px, so offset by -9px puts line at ~26px. */
   background-image:
     linear-gradient(
       to bottom,
@@ -112,7 +113,7 @@ body.t-notebook .article {
       var(--rule) var(--line)
     );
   background-size: 100% var(--line);
-  background-position: 0 0;
+  background-position: 0 -9px;
   background-repeat: repeat;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
@@ -185,31 +186,40 @@ body.t-notebook .article code {
   font-size: .85em;
 }
 body.t-notebook .article pre {
-  /* White background hides lines behind code blocks */
-  background: #fffef8;
+  /* Grid-aligned code block: line-height=--line ensures content is
+     always a multiple of 32px. padding(15+15)+border(1+1)=32px.
+     Total height = margin(32) + frame(32) + n*32 = always on grid. */
+  background-color: #fffef8;
+  background-image: none;
   color: #333;
   border: 1px solid #ddd;
   border-left: 3px solid var(--rule);
-  padding: 14px 16px;
+  padding: 15px 16px 15px 16px;
   font-family: "JetBrains Mono","DM Mono",monospace;
   font-size: 13px;
-  line-height: 22px;
+  line-height: var(--line);
   margin: var(--line) 0 0;
   overflow-x: auto;
 }
+body.t-notebook .article pre code {
+  padding: 0;
+  background: transparent;
+  border-radius: 0;
+  font-size: inherit;
+}
 
-/* --- Images & figures: white box to cover lines --- */
+/* --- Images & figures: white box to cover lines, grid-snapped --- */
 body.t-notebook .article img {
   background: #fff;
   padding: 8px;
   box-shadow: 0 1px 4px rgba(0,0,0,.06);
-  margin: calc(var(--line) / 2) auto;
+  margin: var(--line) auto;
   display: block;
 }
 body.t-notebook .article figure {
   background: #fff;
   padding: 12px;
-  margin: var(--line) auto 0;
+  margin: var(--line) auto;
   box-shadow: 0 1px 4px rgba(0,0,0,.06);
 }
 body.t-notebook .article figure img {
@@ -225,7 +235,7 @@ body.t-notebook .article table {
 body.t-notebook .article hr {
   border: 0;
   border-top: 1px dashed var(--accent);
-  margin: var(--line) 0 0;
+  margin: calc(var(--line) - 1px) 0 0;
   width: 100%;
   opacity: .6;
 }
