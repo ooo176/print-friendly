@@ -1,0 +1,335 @@
+/* ========================================================
+   Theme · Sunset (日落)
+   Warm sunset colors with orange-purple gradients,
+   golden accents, and cozy reading atmosphere.
+   ======================================================== */
+
+body.t-sunset {
+  --paper: #fffbf5;
+  --ink: #3a2a1a;
+  --accent: #ff6b35;
+  --gold: #ffa500;
+  --purple: #9b59b6;
+  --muted: #8b7355;
+  background: linear-gradient(180deg, #ffe5d9 0%, #ffd4c4 50%, #e8c4d8 100%);
+  font-family: "Playfair Display","Noto Serif SC",serif;
+  color: var(--ink);
+}
+
+body.t-sunset .sheet {
+  background: var(--paper);
+  border: 1px solid #ffd4c4;
+  padding: 60px 70px;
+  box-shadow: 0 4px 24px rgba(255,107,53,.2);
+  max-width: 820px;
+  position: relative;
+}
+
+/* Sunset gradient overlay */
+body.t-sunset .sheet::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: linear-gradient(90deg,
+    var(--accent) 0%,
+    var(--gold) 50%,
+    var(--purple) 100%
+  );
+}
+
+/* --- Header elements --- */
+body.t-sunset .runner {
+  display: flex;
+  justify-content: space-between;
+  font-family: "DM Mono",monospace;
+  font-size: 9px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ffd4c4;
+}
+
+body.t-sunset .kicker {
+  font-family: "Playfair Display",serif;
+  font-size: 14px;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--accent);
+  text-align: center;
+  margin: 0 0 16px;
+}
+body.t-sunset .kicker::before,
+body.t-sunset .kicker::after {
+  content: "✦";
+  color: var(--gold);
+  margin: 0 .5em;
+}
+
+body.t-sunset .title {
+  font-family: "Playfair Display","Noto Serif SC",serif;
+  font-weight: 900;
+  font-size: 44px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(--ink);
+  margin: 0 0 16px;
+  letter-spacing: -.01em;
+  text-shadow: 2px 2px 4px rgba(255,107,53,.1);
+}
+
+body.t-sunset .byline {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  font-family: "Playfair Display",serif;
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+  margin: 0 0 40px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--gold);
+}
+body.t-sunset .byline span::before {
+  content: "✦ ";
+  color: var(--accent);
+}
+body.t-sunset .byline b {
+  font-weight: 700;
+  color: var(--ink);
+  font-style: normal;
+}
+
+/* --- Article: warm sunset typography --- */
+body.t-sunset .article {
+  font-family: "Playfair Display","Noto Serif SC",serif;
+  font-size: 17px;
+  line-height: 1.8;
+  color: var(--ink);
+  text-align: justify;
+}
+
+body.t-sunset .article > p:first-of-type::first-letter {
+  float: left;
+  font-size: 5em;
+  line-height: .8;
+  margin: 0 .08em 0 0;
+  font-weight: 900;
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+}
+
+body.t-sunset .article p {
+  margin: 0 0 1.3em;
+}
+
+body.t-sunset .article h1,
+body.t-sunset .article h2,
+body.t-sunset .article h3 {
+  font-family: "Playfair Display","Noto Serif SC",serif;
+  font-weight: 900;
+  color: var(--accent);
+  margin: 2em 0 1em;
+  letter-spacing: -.01em;
+}
+body.t-sunset .article h1 {
+  font-size: 34px;
+  text-align: center;
+  padding-bottom: .5em;
+  border-bottom: 3px solid var(--gold);
+  background: linear-gradient(to right, transparent, #fff5e6, transparent);
+}
+body.t-sunset .article h2 {
+  font-size: 27px;
+  font-style: italic;
+}
+body.t-sunset .article h2::before {
+  content: "✦ ";
+  color: var(--gold);
+}
+body.t-sunset .article h3 {
+  font-size: 21px;
+}
+
+body.t-sunset .article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 2px solid #ffd4c4;
+  transition: all .2s;
+}
+body.t-sunset .article a:hover {
+  border-bottom-color: var(--accent);
+  background: #fff5e6;
+}
+
+body.t-sunset .article blockquote {
+  background: linear-gradient(135deg, #fff5e6, #ffe5d9);
+  border-left: 5px solid var(--gold);
+  padding: 18px 22px;
+  margin: 1.5em 0;
+  font-style: italic;
+  color: #4a3a2a;
+  border-radius: 0 12px 12px 0;
+  box-shadow: 0 2px 12px rgba(255,107,53,.12);
+}
+
+body.t-sunset .article code {
+  font-family: "JetBrains Mono",monospace;
+  font-size: .9em;
+  background: #fff5e6;
+  color: #d84315;
+  padding: 2px 6px;
+  border-radius: 3px;
+  border: 1px solid #ffd4c4;
+}
+
+body.t-sunset .article pre {
+  background: linear-gradient(135deg, #fff5e6, #ffe5d9);
+  border: 2px solid var(--gold);
+  border-radius: 10px;
+  padding: 18px 20px;
+  margin: 1.5em 0;
+  overflow-x: auto;
+  font-family: "JetBrains Mono",monospace;
+  font-size: 14px;
+  line-height: 1.6;
+  box-shadow: 0 3px 12px rgba(255,107,53,.15);
+}
+body.t-sunset .article pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+}
+
+body.t-sunset .article ul,
+body.t-sunset .article ol {
+  margin: 1.2em 0;
+  padding-left: 2em;
+}
+body.t-sunset .article li {
+  margin: .5em 0;
+}
+body.t-sunset .article li::marker {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+body.t-sunset .article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 2em auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(255,107,53,.25);
+  border: 3px solid var(--gold);
+}
+
+body.t-sunset .article figure {
+  margin: 2em 0;
+  padding: 18px;
+  background: linear-gradient(135deg, #fff5e6, #ffe5d9);
+  border-radius: 12px;
+  border: 2px solid var(--gold);
+  box-shadow: 0 2px 12px rgba(255,107,53,.12);
+}
+body.t-sunset .article figure img {
+  box-shadow: none;
+  border: 0;
+  margin: 0;
+}
+body.t-sunset .article figcaption {
+  font-size: 14px;
+  font-style: italic;
+  color: var(--muted);
+  margin-top: 1em;
+  text-align: center;
+}
+
+body.t-sunset .article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: .95em;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(255,107,53,.12);
+}
+body.t-sunset .article th,
+body.t-sunset .article td {
+  border: 1px solid #ffd4c4;
+  padding: 10px 14px;
+  text-align: left;
+}
+body.t-sunset .article th {
+  background: linear-gradient(135deg, var(--accent), var(--gold));
+  color: white;
+  font-weight: 700;
+}
+body.t-sunset .article tr:nth-child(even) {
+  background: #fffbf5;
+}
+body.t-sunset .article tr:nth-child(odd) {
+  background: #fff5e6;
+}
+
+body.t-sunset .article hr {
+  border: 0;
+  text-align: center;
+  margin: 2.5em 0;
+  height: 1.5em;
+}
+body.t-sunset .article hr::before {
+  content: "✦ ✦ ✦";
+  color: var(--gold);
+  font-size: 1.3em;
+  letter-spacing: 1.5em;
+}
+
+body.t-sunset .colophon {
+  margin-top: 3em;
+  padding-top: 1.5em;
+  border-top: 2px solid var(--gold);
+  text-align: center;
+  font-family: "Playfair Display",serif;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--muted);
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* --- Print styles --- */
+@media print {
+  body.t-sunset {
+    background: #fff;
+  }
+  body.t-sunset.print-color {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body.t-sunset .sheet {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  body.t-sunset:not(.print-color) .sheet {
+    background: #fff;
+  }
+  body.t-sunset:not(.print-color) .article h1,
+  body.t-sunset:not(.print-color) .article h2,
+  body.t-sunset:not(.print-color) .article h3 {
+    color: #000;
+  }
+  body.t-sunset:not(.print-color) .article th {
+    background: #f0f0f0;
+    color: #000;
+  }
+}
