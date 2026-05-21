@@ -1,0 +1,191 @@
+/* ========================================================
+   Theme · Naruto (火影忍者)
+   White/light background with subtle Naruto-themed watermark,
+   clean readable typography, warm orange accents
+   ======================================================== */
+body.t-naruto {
+  --paper: #fffcf7;
+  --ink: #2b2b2b;
+  --rule: #e8e0d4;
+  --accent: #e87b35;
+  --muted: #8a8078;
+  background: var(--paper);
+  font-family: "Noto Serif SC","Lora",serif;
+  color: var(--ink);
+}
+
+body.t-naruto .sheet {
+  background: #fff url("naruto-bg.png") center center / 65% no-repeat;
+  border: 1px solid #f0e8dc;
+  padding: 72px 72px 80px;
+  box-shadow: 0 4px 24px rgba(0,0,0,.04);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Overlay to lighten the watermark on screen */
+body.t-naruto .sheet::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255,255,255,.90);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top accent bar */
+body.t-naruto .sheet::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #e87b35, #f4a261, #e87b35);
+}
+
+body.t-naruto .runner {
+  display: flex; justify-content: space-between;
+  font-family: "DM Mono",monospace;
+  font-size: 10px; letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 14px;
+  margin-bottom: 32px;
+}
+body.t-naruto .runner b { color: var(--accent); font-weight: 600; }
+
+body.t-naruto .kicker {
+  font-family: "Noto Serif SC",serif;
+  font-weight: 600;
+  font-size: 12px;
+  letter-spacing: .25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+body.t-naruto .title {
+  font-family: "Noto Serif SC","Lora",serif;
+  font-weight: 700;
+  font-size: clamp(26px,3.5vw,40px);
+  line-height: 1.35;
+  letter-spacing: -.01em;
+  color: var(--ink);
+  margin: 0 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+body.t-naruto .byline {
+  display: flex; flex-wrap: wrap; gap: 16px;
+  font-family: "Lora","Noto Serif SC",serif;
+  font-size: 12px;
+  color: var(--muted);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 12px 0;
+  margin-bottom: 36px;
+  letter-spacing: .02em;
+}
+body.t-naruto .byline b { color: var(--ink); font-weight: 600; }
+
+body.t-naruto .article {
+  font-family: "Lora","Noto Serif SC",serif;
+  font-size: 16px;
+  line-height: 1.9;
+  color: #333;
+  position: relative;
+  z-index: 1;
+}
+body.t-naruto .article > p:first-of-type::first-letter {
+  font-family: "Noto Serif SC",serif;
+  font-weight: 700;
+  float: left;
+  font-size: 3em;
+  line-height: .85;
+  padding: 4px 10px 0 0;
+  color: var(--accent);
+}
+body.t-naruto .article h1, body.t-naruto .article h2,
+body.t-naruto .article h3, body.t-naruto .article h4 {
+  font-family: "Noto Serif SC","Lora",serif;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 1.8em 0 .6em;
+  letter-spacing: -.01em;
+}
+body.t-naruto .article h2 {
+  font-size: 1.35em;
+  padding-bottom: 8px;
+  border-bottom: 2px solid rgba(232,123,53,.25);
+}
+body.t-naruto .article h3 {
+  font-size: 1.15em;
+  color: var(--accent);
+}
+body.t-naruto .article a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(232,123,53,.35);
+  transition: border-color .2s;
+}
+body.t-naruto .article a:hover { border-bottom-color: var(--accent); }
+body.t-naruto .article blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 10px 20px;
+  margin: 1.4em 0;
+  background: rgba(232,123,53,.03);
+  color: #555;
+  font-style: italic;
+  border-radius: 0 4px 4px 0;
+}
+body.t-naruto .article code {
+  background: #fdf5ee;
+  color: #c45a20;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: "JetBrains Mono","DM Mono",monospace;
+  font-size: .87em;
+}
+body.t-naruto .article pre {
+  background: #fdfaf6;
+  color: #2b2b2b;
+  border: 1px solid #f0e8dc;
+  border-left: 3px solid var(--accent);
+  padding: 18px 20px;
+  font-family: "JetBrains Mono","DM Mono",monospace;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 1.4em 0;
+  overflow-x: auto;
+  border-radius: 0 4px 4px 0;
+}
+
+body.t-naruto .colophon {
+  margin-top: 64px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  text-align: center;
+  font-family: "Lora",serif;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: .05em;
+}
+
+@media print {
+  body.t-naruto {
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body.t-naruto .sheet {
+    box-shadow: none; border: 0; padding: 0;
+    background: transparent;
+  }
+  body.t-naruto .sheet::before {
+    display: none;
+  }
+  body.t-naruto .sheet::after {
+    display: none;
+  }
+}

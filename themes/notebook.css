@@ -1,0 +1,266 @@
+/* ========================================================
+   Theme · Notebook (笔记本)
+   Lined paper — lines are drawn as the article's own background,
+   guaranteeing alignment with text line-height.
+   Images get white padding to cover lines.
+   Print preserves lines via print-color-adjust.
+   ======================================================== */
+
+body.t-notebook {
+  --line: 32px;
+  --paper: #f8f6f0;
+  --ink: #2c2c2c;
+  --rule: #b8d4e8;
+  --accent: #d44040;
+  --muted: #888;
+  background: #e8e4dc;
+  font-family: "Noto Serif SC","Lora",serif;
+  color: var(--ink);
+}
+
+body.t-notebook .sheet {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 40px 56px 60px 76px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.08);
+  position: relative;
+}
+
+/* Left margin red line */
+body.t-notebook .sheet::before {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  left: 60px;
+  width: 2px;
+  background: var(--accent);
+  opacity: .5;
+  z-index: 2;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+/* Spiral binding holes */
+body.t-notebook .sheet::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0; left: 16px;
+  width: 24px;
+  background-image: radial-gradient(circle 5px at 12px 0, #bbb 4px, transparent 5px);
+  background-size: 24px 64px;
+  background-position: 0 32px;
+  opacity: .6;
+}
+
+/* --- Header elements --- */
+body.t-notebook .runner { display: none; }
+
+body.t-notebook .kicker {
+  font-family: "Caveat","Noto Serif SC",cursive;
+  font-size: 16px;
+  line-height: var(--line);
+  color: var(--accent);
+  text-transform: none;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+}
+
+body.t-notebook .title {
+  font-family: "Caveat","Noto Serif SC",cursive;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: calc(var(--line) * 1.5);
+  color: var(--ink);
+  margin: 0 0 8px;
+  padding: 0;
+  letter-spacing: 0;
+}
+
+body.t-notebook .byline {
+  display: flex; flex-wrap: wrap; gap: 14px;
+  font-family: "DM Mono",monospace;
+  font-size: 11px;
+  line-height: 20px;
+  color: var(--muted);
+  border: 0;
+  padding: 0 0 12px;
+  margin: 0;
+  letter-spacing: .05em;
+  align-items: center;
+}
+body.t-notebook .byline b { color: var(--ink); font-weight: 500; }
+
+/* --- Article: lines are the article's OWN background ---
+   This guarantees perfect alignment because the background
+   repeats at exactly line-height intervals, starting from
+   the content box top. */
+body.t-notebook .article {
+  font-family: "Lora","Noto Serif SC",serif;
+  font-size: 15px;
+  line-height: var(--line);
+  color: var(--ink);
+  margin-top: 0;
+  padding: 0;
+  /* The key trick: background-image on the article itself,
+     sized to line-height. The 1px line sits at the bottom
+     of each line-height unit = right under the text baseline. */
+  background-image:
+    linear-gradient(
+      to bottom,
+      transparent calc(var(--line) - 1px),
+      var(--rule) calc(var(--line) - 1px),
+      var(--rule) var(--line)
+    );
+  background-size: 100% var(--line);
+  background-position: 0 0;
+  background-repeat: repeat;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+body.t-notebook .article > p:first-of-type::first-letter {
+  font: inherit; float: none; padding: 0; color: inherit;
+}
+body.t-notebook .article p {
+  margin: 0 0 0;
+  padding: 0;
+}
+/* Add spacing between paragraphs = one blank line */
+body.t-notebook .article p + p {
+  margin-top: var(--line);
+}
+body.t-notebook .article ul, body.t-notebook .article ol {
+  margin: 0;
+  padding-left: 1.4em;
+}
+body.t-notebook .article li {
+  line-height: var(--line);
+  margin: 0;
+}
+
+body.t-notebook .article h1, body.t-notebook .article h2,
+body.t-notebook .article h3, body.t-notebook .article h4 {
+  font-family: "Caveat","Noto Serif SC",cursive;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0;
+  /* One blank line before heading */
+  margin: var(--line) 0 0;
+  padding: 0;
+  line-height: var(--line);
+}
+body.t-notebook .article h1 { font-size: 26px; }
+body.t-notebook .article h2 {
+  font-size: 22px;
+  text-decoration: underline;
+  text-decoration-color: var(--accent);
+  text-underline-offset: 4px;
+}
+body.t-notebook .article h3 {
+  font-size: 18px;
+  color: var(--accent);
+}
+body.t-notebook .article h4 { font-size: 16px; }
+
+body.t-notebook .article a {
+  color: #2266aa;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+body.t-notebook .article blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 0 0 0 16px;
+  margin: var(--line) 0 0;
+  color: #555;
+  font-style: italic;
+}
+
+body.t-notebook .article code {
+  background: rgba(240,238,234,.7);
+  color: #333;
+  padding: 1px 5px;
+  border-radius: 2px;
+  font-family: "JetBrains Mono","DM Mono",monospace;
+  font-size: .85em;
+}
+body.t-notebook .article pre {
+  /* White background hides lines behind code blocks */
+  background: #fffef8;
+  color: #333;
+  border: 1px solid #ddd;
+  border-left: 3px solid var(--rule);
+  padding: 14px 16px;
+  font-family: "JetBrains Mono","DM Mono",monospace;
+  font-size: 13px;
+  line-height: 22px;
+  margin: var(--line) 0 0;
+  overflow-x: auto;
+}
+
+/* --- Images & figures: white box to cover lines --- */
+body.t-notebook .article img {
+  background: #fff;
+  padding: 8px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+  margin: calc(var(--line) / 2) auto;
+  display: block;
+}
+body.t-notebook .article figure {
+  background: #fff;
+  padding: 12px;
+  margin: var(--line) auto 0;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+body.t-notebook .article figure img {
+  padding: 0;
+  box-shadow: none;
+  margin: 0;
+}
+
+body.t-notebook .article table {
+  background: #fff;
+}
+
+body.t-notebook .article hr {
+  border: 0;
+  border-top: 1px dashed var(--accent);
+  margin: var(--line) 0 0;
+  width: 100%;
+  opacity: .6;
+}
+
+body.t-notebook .colophon {
+  margin-top: calc(var(--line) * 2);
+  line-height: var(--line);
+  text-align: center;
+  font-family: "Caveat",cursive;
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+@media print {
+  body.t-notebook {
+    background: #fff;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body.t-notebook .sheet {
+    border: 0;
+    box-shadow: none;
+    padding-left: 76px;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body.t-notebook .article {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body.t-notebook .sheet::before {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  body.t-notebook .sheet::after { display: none; }
+}

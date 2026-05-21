@@ -430,6 +430,10 @@
   </div>
 </main>
 
+<!-- Watermark image for themes that need it (position:fixed repeats on every printed page) -->
+<img id="watermark" src="themes/naruto-bg.png" alt="" aria-hidden="true"
+     style="position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:50%;opacity:.06;pointer-events:none;z-index:0;display:none;" />
+
 <script>
 (() => {
   const $ = (id) => document.getElementById(id);
@@ -472,6 +476,9 @@
     await loadThemeCSS(id).catch((e) => { console.warn(e); });
     THEMES.forEach(t => document.body.classList.remove("t-" + t.id));
     document.body.classList.add("t-" + id);
+    // Show/hide watermark for themes that use it
+    const wm = $("watermark");
+    if (wm) wm.style.display = (id === "naruto") ? "block" : "none";
     try { localStorage.setItem("press.theme", id); } catch(_) {}
   }
 

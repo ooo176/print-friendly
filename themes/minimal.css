@@ -1,0 +1,141 @@
+/* ========================================================
+   Theme · Minimal (极简)
+   Pure white, maximum whitespace, no decoration,
+   single elegant serif font, content-first reading
+   ======================================================== */
+body.t-minimal {
+  --paper: #fff;
+  --ink: #1a1a1a;
+  --rule: #e0e0e0;
+  --accent: #1a1a1a;
+  --muted: #999;
+  background: var(--paper);
+  font-family: "IBM Plex Serif","Noto Serif SC",serif;
+  color: var(--ink);
+}
+
+body.t-minimal .sheet {
+  background: #fff;
+  border: 0;
+  padding: 80px 72px 100px;
+  box-shadow: none;
+  max-width: 720px;
+}
+
+/* Hide all decorative elements */
+body.t-minimal .runner { display: none; }
+body.t-minimal .kicker { display: none; }
+body.t-minimal .sheet::before { display: none; }
+body.t-minimal .sheet::after { display: none; }
+
+body.t-minimal .title {
+  font-family: "IBM Plex Serif","Noto Serif SC",serif;
+  font-weight: 600;
+  font-size: clamp(24px,3vw,36px);
+  line-height: 1.3;
+  color: var(--ink);
+  margin: 0 0 16px;
+  letter-spacing: -.01em;
+}
+
+body.t-minimal .byline {
+  display: block;
+  font-family: "IBM Plex Sans","Noto Serif SC",sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  border: 0;
+  padding: 0 0 24px;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--rule);
+  letter-spacing: 0;
+  text-transform: none;
+}
+body.t-minimal .byline span { display: inline; margin-right: 16px; }
+body.t-minimal .byline b { color: var(--ink); font-weight: 500; }
+
+body.t-minimal .article {
+  font-family: "IBM Plex Serif","Noto Serif SC",serif;
+  font-size: 17px;
+  line-height: 1.8;
+  color: #333;
+  max-width: 60ch;
+}
+body.t-minimal .article > p:first-of-type::first-letter {
+  font: inherit; float: none; padding: 0; color: inherit;
+}
+body.t-minimal .article h1, body.t-minimal .article h2,
+body.t-minimal .article h3, body.t-minimal .article h4 {
+  font-family: "IBM Plex Serif","Noto Serif SC",serif;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 2.2em 0 .6em;
+  letter-spacing: -.01em;
+}
+body.t-minimal .article h2 {
+  font-size: 1.3em;
+  border: 0; padding: 0;
+}
+body.t-minimal .article h3 {
+  font-size: 1.1em;
+  font-weight: 500;
+}
+body.t-minimal .article a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+  text-decoration-color: #bbb;
+}
+body.t-minimal .article a:hover {
+  text-decoration-color: var(--ink);
+}
+body.t-minimal .article blockquote {
+  border-left: 2px solid var(--rule);
+  padding: 0 0 0 20px;
+  margin: 1.4em 0;
+  color: #666;
+  font-style: normal;
+}
+body.t-minimal .article code {
+  background: #f5f5f5;
+  color: #333;
+  padding: 2px 5px;
+  border-radius: 2px;
+  font-family: "JetBrains Mono","DM Mono",monospace;
+  font-size: .87em;
+}
+body.t-minimal .article pre {
+  background: #fafafa;
+  color: #333;
+  border: 1px solid #eee;
+  padding: 16px 20px;
+  font-family: "JetBrains Mono","DM Mono",monospace;
+  font-size: 13px;
+  margin: 1.4em 0;
+  overflow-x: auto;
+}
+body.t-minimal .article hr {
+  border: 0;
+  border-top: 1px solid var(--rule);
+  margin: 2.5em 0;
+  width: 100%;
+  opacity: 1;
+}
+
+body.t-minimal .colophon {
+  margin-top: 80px;
+  padding-top: 20px;
+  border-top: 1px solid var(--rule);
+  text-align: left;
+  font-family: "IBM Plex Sans",sans-serif;
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0;
+  text-transform: none;
+}
+body.t-minimal .colophon span + span { display: none; }
+
+@media print {
+  body.t-minimal { background: #fff; }
+  body.t-minimal .sheet { padding: 0; }
+}
