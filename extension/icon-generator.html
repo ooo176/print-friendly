@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Press Icon Generator</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    canvas { border: 1px solid #ccc; margin: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Press Extension Icon Generator</h1>
+  <p>Right-click each canvas and "Save image as..." to save the icons.</p>
+
+  <div>
+    <h3>16x16</h3>
+    <canvas id="icon16" width="16" height="16"></canvas>
+  </div>
+
+  <div>
+    <h3>32x32</h3>
+    <canvas id="icon32" width="32" height="32"></canvas>
+  </div>
+
+  <div>
+    <h3>48x48</h3>
+    <canvas id="icon48" width="48" height="48"></canvas>
+  </div>
+
+  <div>
+    <h3>128x128</h3>
+    <canvas id="icon128" width="128" height="128"></canvas>
+  </div>
+
+  <script>
+    function drawIcon(canvas) {
+      const ctx = canvas.getContext('2d');
+      const size = canvas.width;
+
+      // Background
+      ctx.fillStyle = '#0b0b0a';
+      ctx.fillRect(0, 0, size, size);
+
+      // Letter "P"
+      ctx.fillStyle = '#f5f1e8';
+      ctx.font = `bold ${size * 0.7}px serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('P', size / 2, size / 2);
+
+      // Accent line
+      ctx.strokeStyle = '#b8231c';
+      ctx.lineWidth = Math.max(1, size / 16);
+      ctx.beginPath();
+      ctx.moveTo(size * 0.2, size * 0.85);
+      ctx.lineTo(size * 0.8, size * 0.85);
+      ctx.stroke();
+    }
+
+    // Generate all icons
+    ['icon16', 'icon32', 'icon48', 'icon128'].forEach(id => {
+      const canvas = document.getElementById(id);
+      drawIcon(canvas);
+    });
+  </script>
+</body>
+</html>

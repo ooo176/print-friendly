@@ -1,0 +1,309 @@
+/* ========================================================
+   Theme · Technical (技术手册)
+   Developer documentation style with prominent code
+   blocks, monospace fonts, and sidebar navigation.
+   ======================================================== */
+
+body.t-technical {
+  --paper: #ffffff;
+  --ink: #24292f;
+  --accent: #0969da;
+  --muted: #57606a;
+  --code-bg: #f6f8fa;
+  --code-border: #d0d7de;
+  background: #f6f8fa;
+  font-family: "IBM Plex Sans","Segoe UI",sans-serif;
+  color: var(--ink);
+}
+
+body.t-technical .sheet {
+  background: var(--paper);
+  border: 1px solid #d0d7de;
+  padding: 40px 50px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+  max-width: 900px;
+}
+
+/* --- Header elements --- */
+body.t-technical .runner {
+  display: flex;
+  justify-content: space-between;
+  font-family: "JetBrains Mono",monospace;
+  font-size: 10px;
+  letter-spacing: .05em;
+  color: var(--muted);
+  margin-bottom: 24px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #d0d7de;
+}
+
+body.t-technical .kicker {
+  font-family: "JetBrains Mono",monospace;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: #ddf4ff;
+  padding: 4px 10px;
+  border-radius: 3px;
+  display: inline-block;
+  margin: 0 0 12px;
+}
+
+body.t-technical .title {
+  font-family: "IBM Plex Sans",sans-serif;
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.2;
+  color: var(--ink);
+  margin: 0 0 12px;
+  letter-spacing: -.02em;
+}
+
+body.t-technical .byline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  font-family: "IBM Plex Sans",sans-serif;
+  font-size: 13px;
+  color: var(--muted);
+  margin: 0 0 28px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #d0d7de;
+}
+body.t-technical .byline span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+body.t-technical .byline span::before {
+  content: "▸";
+  color: var(--accent);
+  font-weight: 700;
+}
+body.t-technical .byline b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+/* --- Article: technical documentation style --- */
+body.t-technical .article {
+  font-family: "IBM Plex Sans","Segoe UI",sans-serif;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+}
+
+body.t-technical .article > p:first-of-type::first-letter {
+  float: none;
+  font-size: inherit;
+}
+
+body.t-technical .article p {
+  margin: 0 0 1em;
+}
+
+body.t-technical .article h1,
+body.t-technical .article h2,
+body.t-technical .article h3,
+body.t-technical .article h4 {
+  font-family: "IBM Plex Sans",sans-serif;
+  font-weight: 700;
+  color: var(--ink);
+  margin: 1.8em 0 .8em;
+  letter-spacing: -.01em;
+}
+body.t-technical .article h1 {
+  font-size: 28px;
+  padding-bottom: .4em;
+  border-bottom: 2px solid #d0d7de;
+}
+body.t-technical .article h2 {
+  font-size: 22px;
+  padding-bottom: .3em;
+  border-bottom: 1px solid #d0d7de;
+}
+body.t-technical .article h3 {
+  font-size: 18px;
+}
+body.t-technical .article h4 {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* Anchor links */
+body.t-technical .article h1::before,
+body.t-technical .article h2::before,
+body.t-technical .article h3::before {
+  content: "# ";
+  color: var(--accent);
+  opacity: 0;
+  margin-left: -1.2em;
+  padding-right: .3em;
+  font-weight: 400;
+}
+body.t-technical .article h1:hover::before,
+body.t-technical .article h2:hover::before,
+body.t-technical .article h3:hover::before {
+  opacity: .6;
+}
+
+body.t-technical .article a {
+  color: var(--accent);
+  text-decoration: none;
+}
+body.t-technical .article a:hover {
+  text-decoration: underline;
+}
+
+body.t-technical .article blockquote {
+  background: #ddf4ff;
+  border-left: 4px solid var(--accent);
+  padding: 12px 16px;
+  margin: 1.2em 0;
+  border-radius: 4px;
+}
+body.t-technical .article blockquote::before {
+  content: "ℹ️ ";
+  font-weight: 700;
+}
+
+/* Inline code */
+body.t-technical .article code {
+  font-family: "JetBrains Mono","Courier New",monospace;
+  font-size: .9em;
+  background: var(--code-bg);
+  padding: 2px 6px;
+  border: 1px solid var(--code-border);
+  border-radius: 3px;
+}
+
+/* Code blocks */
+body.t-technical .article pre {
+  background: var(--code-bg);
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+  padding: 16px 18px;
+  margin: 1.2em 0;
+  overflow-x: auto;
+  font-family: "JetBrains Mono","Courier New",monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  position: relative;
+}
+body.t-technical .article pre code {
+  background: transparent;
+  border: 0;
+  padding: 0;
+  border-radius: 0;
+}
+/* Language label */
+body.t-technical .article pre::before {
+  content: "code";
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-family: "IBM Plex Sans",sans-serif;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--muted);
+  opacity: .5;
+}
+
+body.t-technical .article ul,
+body.t-technical .article ol {
+  margin: 1em 0;
+  padding-left: 2em;
+}
+body.t-technical .article li {
+  margin: .4em 0;
+}
+body.t-technical .article li::marker {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+body.t-technical .article img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 1.5em auto;
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+}
+
+body.t-technical .article figure {
+  margin: 1.5em 0;
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+  padding: 12px;
+  background: var(--code-bg);
+}
+body.t-technical .article figure img {
+  border: 0;
+  margin: 0;
+}
+body.t-technical .article figcaption {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: .8em;
+  text-align: center;
+}
+
+body.t-technical .article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5em 0;
+  font-size: 14px;
+  border: 1px solid var(--code-border);
+  border-radius: 6px;
+  overflow: hidden;
+}
+body.t-technical .article th,
+body.t-technical .article td {
+  border: 1px solid var(--code-border);
+  padding: 10px 12px;
+  text-align: left;
+}
+body.t-technical .article th {
+  background: var(--code-bg);
+  font-weight: 600;
+}
+body.t-technical .article tr:nth-child(even) {
+  background: #fafbfc;
+}
+
+body.t-technical .article hr {
+  border: 0;
+  border-top: 1px solid var(--code-border);
+  margin: 2em 0;
+}
+
+body.t-technical .colophon {
+  margin-top: 3em;
+  padding-top: 1.2em;
+  border-top: 1px solid var(--code-border);
+  font-family: "JetBrains Mono",monospace;
+  font-size: 11px;
+  color: var(--muted);
+  display: flex;
+  justify-content: space-between;
+}
+
+/* --- Print styles --- */
+@media print {
+  body.t-technical {
+    background: #fff;
+  }
+  body.t-technical .sheet {
+    border: 0;
+    box-shadow: none;
+    padding: 0;
+  }
+  body.t-technical .article pre {
+    background: #f8f8f8;
+    border-color: #ccc;
+  }
+}
