@@ -476,9 +476,10 @@
     await loadThemeCSS(id).catch((e) => { console.warn(e); });
     THEMES.forEach(t => document.body.classList.remove("t-" + t.id));
     document.body.classList.add("t-" + id);
-    // Show/hide watermark for themes that use it
+    // Show/hide watermark for themes that use it (only when article is extracted)
     const wm = $("watermark");
-    if (wm) wm.style.display = (id === "naruto") ? "block" : "none";
+    const sheetVisible = !$("sheet").hidden;
+    if (wm) wm.style.display = (id === "naruto" && sheetVisible) ? "block" : "none";
     try { localStorage.setItem("press.theme", id); } catch(_) {}
   }
 
@@ -708,6 +709,10 @@
 
     $("empty").hidden = true;
     $("sheet").hidden = false;
+    // Show naruto watermark now that article is visible
+    const wm = $("watermark");
+    const currentTheme = $("themeSelect").value;
+    if (wm) wm.style.display = (currentTheme === "naruto") ? "block" : "none";
     applyImageOption();
     window.scrollTo({ top: $("sheet").offsetTop - 80, behavior: "smooth" });
   }
