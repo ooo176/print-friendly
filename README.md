@@ -127,6 +127,21 @@ cp themes/minimal.css themes/myname.css
 print-friendly/
 ├── print-friendly.html      # 主页面（双击打开即可使用）
 ├── README.md               # 用户使用指南（当前文件）
+├── extension/              # Chrome 扩展版本
+│   ├── manifest.json       # 扩展配置文件
+│   ├── background.js       # 后台脚本
+│   ├── content.js          # 内容脚本
+│   ├── app.js             # 主应用逻辑
+│   ├── print-friendly.html # 扩展版页面
+│   ├── icons/             # 扩展图标
+│   ├── libs/              # 本地库文件
+│   │   ├── readability.js
+│   │   ├── purify.min.js
+│   │   └── marked.min.js
+│   ├── themes/            # 主题文件（复制自主项目）
+│   ├── INSTALL.md         # 安装指南
+│   ├── README.md          # 扩展使用文档
+│   └── DEVELOPMENT.md     # 开发文档
 ├── doc/
 │   ├── theme-design-plan.md # 主题设计方案
 │   └── TECHNICAL.md         # 技术实现细节文档
@@ -149,9 +164,12 @@ print-friendly/
 
 ## 文档
 
-- 用户使用指南 — 当前文件
-- [主题设计方案](doc/theme-design-plan.md) — 10 套主题的设计理念、配色方案、实现优先级
-- [技术实现详解](doc/TECHNICAL.md) — 抓取链路、正文提取、主题系统设计、依赖说明等
+- **用户使用指南** — 当前文件
+- **[扩展安装指南](extension/INSTALL.md)** — Chrome 扩展安装步骤（5 分钟）
+- **[扩展使用文档](extension/README.md)** — 扩展功能说明和使用技巧
+- **[主题设计方案](doc/theme-design-plan.md)** — 10 套主题的设计理念、配色方案、实现优先级
+- **[技术实现详解](doc/TECHNICAL.md)** — 抓取链路、正文提取、主题系统设计、依赖说明等
+- **[扩展开发文档](extension/DEVELOPMENT.md)** — 扩展开发和调试指南
 
 ---
 
@@ -179,11 +197,13 @@ print-friendly/
 ## 特性亮点
 
 ✅ **零依赖** — 单个 HTML 文件，无需安装任何依赖  
-✅ **离线可用** — 所有资源通过 CDN 加载，支持离线使用  
+✅ **双模式** — Web 版本和浏览器扩展，满足不同需求  
+✅ **反爬虫支持** — 扩展版可提取反爬虫网站（什么值得买、知乎等）  
 ✅ **主题丰富** — 10 套精心设计的打印主题，黑白彩色兼顾  
 ✅ **自动适配** — 自动检测 JS 渲染页面，智能切换提取模式  
 ✅ **打印优化** — 专为 A4 打印设计，支持页码、页眉页脚  
-✅ **可扩展** — 简单的主题系统，轻松添加自定义样式
+✅ **可扩展** — 简单的主题系统，轻松添加自定义样式  
+✅ **离线可用** — 扩展版完全离线，无需网络连接
 
 ---
 
