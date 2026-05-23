@@ -20,28 +20,10 @@ body.t-notebook {
 
 body.t-notebook .sheet {
   background-color: #fff;
-  /* Left margin red line drawn as a horizontal background gradient.
-     A `position:absolute` overlay spanning top:0/bottom:0 doesn't
-     paginate cleanly in print — the browser keeps it tied to its
-     initial page box, so as content reflows across page breaks the
-     line drifts and looks slanted. A horizontal gradient is purely
-     a function of x, so every paginated slice of the sheet renders
-     the same vertical line in the same place. */
-  background-image: linear-gradient(
-    to right,
-    transparent 60px,
-    rgba(212, 64, 64, .5) 60px,
-    rgba(212, 64, 64, .5) 62px,
-    transparent 62px
-  );
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
   border: 1px solid #ccc;
   padding: 40px 56px 60px 76px;
   box-shadow: 0 2px 12px rgba(0,0,0,.08);
   position: relative;
-  -webkit-print-color-adjust: exact;
-  print-color-adjust: exact;
 }
 /* Spiral binding holes */
 body.t-notebook .sheet::after {
@@ -104,11 +86,14 @@ body.t-notebook .article {
   line-height: var(--line);
   color: var(--ink);
   margin-top: 0;
-  padding: 0;
-  /* The key trick: background-image on the article itself,
-     sized to line-height. Offset so the 1px rule aligns just
-     below the text baseline. With 36px line-height and 15px font,
-     baseline is ~22px, so offset by -9px puts line at ~26px. */
+  /* Red margin line: border-left on a block element is drawn on EVERY
+     printed page (CSS fragmentation spec). Move article 16px left via
+     negative margin so the border lands at 60px from sheet edge
+     (76px padding - 16px = 60px), then restore content position with
+     padding-left. */
+  margin-left: -16px;
+  padding-left: 14px;
+  border-left: 2px solid rgba(212, 64, 64, .5);
   background-image:
     linear-gradient(
       to bottom,
@@ -265,12 +250,11 @@ body.t-notebook .colophon {
     border: 0;
     box-shadow: none;
     padding-left: 76px;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
   }
   body.t-notebook .article {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
+    border-left: 2px solid rgba(212, 64, 64, .5);
   }
   body.t-notebook .sheet::after { display: none; }
 }
