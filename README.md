@@ -7,7 +7,7 @@
 把任意网页地址变成一份**干净、可打印**的正文页
 剥离广告、侧栏、导航，按你选的版式重新排版，一键打印或保存为 PDF
 
-[**🚀 立即在线体验 →**](http://39.101.172.168:8181/other/print/print-friendly.html)
+[**🚀 立即在线体验 →**](http://39.101.172.168:8181/other/print-friendly/print-friendly.html)
 
 [安装浏览器扩展](extension/INSTALL.md) · [扩展使用文档](extension/README.md) · [主题设计方案](doc/theme-design-plan.md) · [技术实现](doc/TECHNICAL.md)
 
@@ -36,7 +36,7 @@
 
 无需任何安装，点击下方按钮立即在浏览器中打开：
 
-> 👉 [**点击这里打开在线版本**](http://39.101.172.168:8181/other/print/print-friendly.html)
+> 👉 [**点击这里打开在线版本**](http://39.101.172.168:8181/other/print-friendly/print-friendly.html)
 
 ### 💻 方式二：本地 Web 版本
 
@@ -264,6 +264,6 @@ print-friendly/
 
 如果这个项目对你有帮助，欢迎 ⭐ Star 支持
 
-[**🚀 立即体验在线版本**](http://39.101.172.168:8181/other/print/print-friendly.html)
+[**🚀 立即体验在线版本**](http://39.101.172.168:8181/other/print-friendly/print-friendly.html)
 
 </div>
