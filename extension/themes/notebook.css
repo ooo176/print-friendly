@@ -20,22 +20,26 @@ body.t-notebook {
 
 body.t-notebook .sheet {
   background-color: #fff;
+  /* Left margin red line drawn as a horizontal background gradient.
+     A `position:absolute` overlay spanning top:0/bottom:0 doesn't
+     paginate cleanly in print — the browser keeps it tied to its
+     initial page box, so as content reflows across page breaks the
+     line drifts and looks slanted. A horizontal gradient is purely
+     a function of x, so every paginated slice of the sheet renders
+     the same vertical line in the same place. */
+  background-image: linear-gradient(
+    to right,
+    transparent 60px,
+    rgba(212, 64, 64, .5) 60px,
+    rgba(212, 64, 64, .5) 62px,
+    transparent 62px
+  );
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
   border: 1px solid #ccc;
   padding: 40px 56px 60px 76px;
   box-shadow: 0 2px 12px rgba(0,0,0,.08);
   position: relative;
-}
-
-/* Left margin red line */
-body.t-notebook .sheet::before {
-  content: "";
-  position: absolute;
-  top: 0; bottom: 0;
-  left: 60px;
-  width: 2px;
-  background: var(--accent);
-  opacity: .5;
-  z-index: 2;
   -webkit-print-color-adjust: exact;
   print-color-adjust: exact;
 }
@@ -265,10 +269,6 @@ body.t-notebook .colophon {
     print-color-adjust: exact;
   }
   body.t-notebook .article {
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-  body.t-notebook .sheet::before {
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
