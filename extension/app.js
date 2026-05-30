@@ -129,6 +129,32 @@
     };
   }
 
+  /* Convert plain text to article HTML.
+     Splits paragraphs on blank lines, preserves single line breaks as <br>,
+     escapes HTML so the text content shows verbatim. */
+  function buildTxtArticle(text, fileName) {
+    const escape = (s) => s
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+    const blocks = text
+      .replace(/\r\n?/g, "\n")
+      .split(/\n{2,}/)
+      .map(b => b.replace(/^\n+|\n+$/g, ""))
+      .filter(Boolean);
+    const html = blocks
+      .map(b => `<p>${escape(b).replace(/\n/g, "<br>")}</p>`)
+      .join("\n");
+    const title = (fileName || "Untitled").replace(/\.[^.]+$/, "");
+    return {
+      title,
+      byline: null,
+      content: html,
+      length: text.length,
+      sourceLabel: `LOCAL · ${fileName}`,
+    };
+  }
+
   function stripLeadingNav(md) {
     const blocks = md.split(/\n{2,}/);
     let firstProseIdx = -1;
@@ -285,12 +311,18 @@
 
     $("title").textContent = article.title || "Untitled";
     $("byAuthor").textContent = article.byline || "Unknown";
-    $("bySource").innerHTML = `<a href="${sourceUrl}" target="_blank" rel="noopener">${domainOf(sourceUrl)}</a>`;
+    if (sourceUrl) {
+      $("bySource").innerHTML = `<a href="${sourceUrl}" target="_blank" rel="noopener">${domainOf(sourceUrl)}</a>`;
+      $("kicker").textContent = (domainOf(sourceUrl) || "FEATURE").toUpperCase();
+    } else {
+      const localTag = article.sourceLabel || "LOCAL FILE";
+      $("bySource").textContent = localTag;
+      $("kicker").textContent = "LOCAL · TXT";
+    }
     $("byWords").textContent = words.toLocaleString();
     $("runDate").textContent = dateStr;
     $("runFolio").textContent = String(Math.floor(Math.random()*900+100));
     $("runIssue").textContent = String(now.getFullYear()).slice(-2) + "·" + String(now.getMonth()+1).padStart(2,"0");
-    $("kicker").textContent = (domainOf(sourceUrl) || "FEATURE").toUpperCase();
     $("dateLine").textContent = dateStr;
     $("wordLine").innerHTML = `WORDS · <b>${words.toLocaleString()}</b>`;
     $("timeLine").innerHTML = `READ · <b>${minutes} MIN</b>`;
@@ -363,6 +395,32 @@
   $("btnExtract").addEventListener("click", run);
   $("url").addEventListener("keydown", (e) => { if (e.key === "Enter") run(); });
   $("btnPrint").addEventListener("click", () => window.print());
+  $("btnImportTxt").addEventListener("click", () => $("fileTxt").click());
+  $("fileTxt").addEventListener("change", async (e) => {
+    const file = e.target.files && e.target.files[0];
+    e.target.value = "";
+    if (!file) return;
+    if (!/\.txt$/i.test(file.name) && file.type && file.type !== "text/plain") {
+      status("仅支持 .txt 文件", "error");
+      return;
+    }
+    const MAX = 5 * 1024 * 1024;
+    if (file.size > MAX) {
+      status(`文件过大（${(file.size/1024/1024).toFixed(1)} MB），上限 5 MB`, "error");
+      return;
+    }
+    status(`正在读取 ${file.name} …`, "loading");
+    try {
+      const text = await file.text();
+      const article = buildTxtArticle(text, file.name);
+      render(article, null);
+      status(`已就绪 · 本地文件 ${file.name}`);
+      $("btnPrint").disabled = false;
+    } catch (err) {
+      console.error(err);
+      status(err.message || "文件读取失败", "error");
+    }
+  });
   $("optImages").addEventListener("change", applyImageOption);
   $("optLinks").addEventListener("change", applyLinkOption);
   document.querySelectorAll(".examples button").forEach(b => {

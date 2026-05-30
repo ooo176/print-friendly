@@ -99,7 +99,7 @@
   .composer {
     padding: 28px 40px 8px;
     display: grid;
-    grid-template-columns: 1fr auto auto;
+    grid-template-columns: 1fr auto auto auto;
     gap: 12px; align-items: stretch;
     background: #f5f1e8;
   }
@@ -373,6 +373,8 @@
            placeholder="https://www.runoob.com/python3/python3-tutorial.html" />
   </div>
   <button class="btn ghost" id="btnExtract"><span class="dot"></span>提取正文</button>
+  <button class="btn ghost" id="btnImportTxt" title="从本地导入 .txt 文件直接排版">📄 导入 TXT</button>
+  <input type="file" id="fileTxt" accept=".txt,text/plain" hidden />
   <button class="btn" id="btnPrint" disabled>打印 / 保存 PDF</button>
 </section>
 
